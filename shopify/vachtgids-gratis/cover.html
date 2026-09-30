@@ -1,0 +1,56 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+@font-face{font-family:P;font-weight:400;src:url(https://cdn.jsdelivr.net/npm/@fontsource/poppins@5/files/poppins-latin-400-normal.woff2)}
+@font-face{font-family:P;font-weight:600;src:url(https://cdn.jsdelivr.net/npm/@fontsource/poppins@5/files/poppins-latin-600-normal.woff2)}
+@font-face{font-family:P;font-weight:700;src:url(https://cdn.jsdelivr.net/npm/@fontsource/poppins@5/files/poppins-latin-700-normal.woff2)}
+@font-face{font-family:P;font-weight:800;src:url(https://cdn.jsdelivr.net/npm/@fontsource/poppins@5/files/poppins-latin-800-normal.woff2)}
+:root{--paars:#4B2E83;--diep:#33205E;--licht:#6545A6;--koraal:#FF7A70;--koraal-d:#F2574C;--lila:#C9B6E8;--lila-l:#E6DCF5;--grond:#F4F0FA}
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:1024px;height:1024px;font-family:P,sans-serif;overflow:hidden;
+ background:radial-gradient(70% 70% at 50% 45%,#FFFFFF 0%,var(--grond) 55%,var(--lila-l) 100%);position:relative}
+.paws{position:absolute;inset:0;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cg fill='%23C9B6E8' fill-opacity='.45'%3E%3Cg transform='translate(30 40) rotate(-18)'%3E%3Cellipse cx='15' cy='22' rx='12' ry='10'/%3E%3Ccircle cx='3' cy='8' r='4.5'/%3E%3Ccircle cx='11' cy='2' r='4.5'/%3E%3Ccircle cx='20' cy='2' r='4.5'/%3E%3Ccircle cx='28' cy='8' r='4.5'/%3E%3C/g%3E%3Cg transform='translate(150 150) rotate(24) scale(.8)'%3E%3Cellipse cx='15' cy='22' rx='12' ry='10'/%3E%3Ccircle cx='3' cy='8' r='4.5'/%3E%3Ccircle cx='11' cy='2' r='4.5'/%3E%3Ccircle cx='20' cy='2' r='4.5'/%3E%3Ccircle cx='28' cy='8' r='4.5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.stage{position:absolute;left:50%;top:50%;width:560px;height:760px;transform:translate(-52%,-50%) rotate(-4deg)}
+.pages{position:absolute;left:18px;top:12px;width:100%;height:100%;border-radius:10px 18px 18px 10px;
+ background:repeating-linear-gradient(90deg,#fff 0 3px,#EDE8F4 3px 4px);box-shadow:0 30px 60px rgba(51,32,94,.28)}
+.cover{position:absolute;inset:0;border-radius:8px 16px 16px 8px;overflow:hidden;color:#fff;
+ background:radial-gradient(90% 70% at 70% 30%,var(--licht) 0%,var(--paars) 50%,var(--diep) 100%);
+ box-shadow:0 24px 50px rgba(51,32,94,.35)}
+.cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:26px;background:linear-gradient(90deg,rgba(0,0,0,.28),rgba(0,0,0,.05) 70%,rgba(255,255,255,.08))}
+.cover .paws{opacity:.9;background-size:200px}
+.inner{position:absolute;inset:0;padding:64px 52px 52px 74px;display:flex;flex-direction:column}
+.merk{font-weight:700;font-size:17px;letter-spacing:6px;color:var(--lila)}
+.lijn{width:56px;height:4px;border-radius:2px;background:var(--koraal);margin:22px 0 26px}
+h1{font-weight:800;line-height:1.02;letter-spacing:-1px}
+h1 .a{display:block;font-size:52px}
+h1 .b{display:block;font-size:37px;color:var(--koraal);margin-top:8px;letter-spacing:-.5px}
+.sub{margin-top:18px;font-size:19px;line-height:1.45;color:var(--lila-l);font-weight:400;max-width:380px}
+.icons{margin-top:auto;display:flex;gap:18px}
+.ic{flex:1;background:rgba(255,255,255,.1);border:1px solid rgba(230,220,245,.25);border-radius:16px;padding:16px 8px 12px;text-align:center}
+.ic svg{width:44px;height:44px;display:block;margin:0 auto 8px}
+.ic span{font-size:14px;font-weight:600;color:#fff}
+.voet{margin-top:22px;display:flex;justify-content:space-between;align-items:center;font-size:15px;color:var(--lila);font-weight:600}
+.sticker{position:absolute;right:92px;top:92px;width:210px;height:210px;border-radius:50%;background:var(--koraal);color:#fff;
+ display:flex;flex-direction:column;align-items:center;justify-content:center;transform:rotate(10deg);
+ border:7px solid #fff;box-shadow:0 18px 36px rgba(242,87,76,.35);z-index:5}
+.sticker .s1{font-weight:800;font-size:44px;letter-spacing:1px;line-height:1}
+.sticker .s2{font-weight:700;font-size:22px;margin-top:6px;opacity:.95}
+</style></head><body>
+<div class="paws"></div>
+<div class="stage">
+ <div class="pages"></div>
+ <div class="cover"><div class="paws"></div>
+  <div class="inner">
+   <div class="merk">ROBUSTRISE</div>
+   <div class="lijn"></div>
+   <h1><span class="a">De Complete</span><span class="b">Vachtverzorgingsgids</span></h1>
+   <p class="sub">Alles over vachttypen, borstelen, wassen, drogen en de rui.</p>
+   <div class="icons">
+    <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="32" height="14" rx="5"/><path d="M13 22v8M19 22v10M25 22v10M31 22v10M36 22v8"/><path d="M22 8V4"/></svg><span>Borstelen</span></div>
+    <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6c6 8 11 14 11 21a11 11 0 0 1-22 0c0-7 5-13 11-21z"/><path d="M19 29a5 5 0 0 0 5 5"/></svg><span>Wassen</span></div>
+    <div class="ic"><svg viewBox="0 0 48 48" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17h24a5 5 0 1 0-5-5"/><path d="M6 25h32a5 5 0 1 1-5 5"/><path d="M6 33h16"/></svg><span>Drogen</span></div>
+   </div>
+   <div class="voet"><span>36 pagina's · PDF</span><span>robustrise.nl</span></div>
+  </div>
+ </div>
+</div>
+<div class="sticker"><span class="s1">GRATIS</span><span class="s2">€ 0,00</span></div>
+</body></html>
