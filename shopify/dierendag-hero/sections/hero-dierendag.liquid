@@ -240,7 +240,7 @@
 
       {%- if s.pill_text != blank -%}
         {%- if s.pill_link != blank -%}
-          <a class="rrdd-pill" href="{{ s.pill_link }}" target="_blank" rel="noopener">{{ s.pill_text | escape }} <span class="rrdd-pill-arrow" aria-hidden="true">→</span></a>
+          <a class="rrdd-pill" href="{{ s.pill_link }}"{% if s.pill_link contains '://' %} target="_blank" rel="noopener"{% endif %}>{{ s.pill_text | escape }} <span class="rrdd-pill-arrow" aria-hidden="true">→</span></a>
         {%- else -%}
           <span class="rrdd-pill">{{ s.pill_text | escape }}</span>
         {%- endif -%}

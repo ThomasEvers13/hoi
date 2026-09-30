@@ -1,0 +1,39 @@
+{%- comment -%}
+  Dierendag 2026: de gratis vachtgids (€ 0) als eerste kaart in de upsellcarrousel van de winkelwagen.
+  Verdwijnt vanzelf na di 6 okt 23:59 en zodra de gids al in de winkelwagen zit.
+  Zelfde opbouw en formulierklassen als rr-upsell-card, zodat assets/cart-drawer.js hem toevoegt.
+  Bewust zonder data-discount: dan laat updateUpsellDiscounts() de prijsregel met rust.
+  Gebruik (bovenaan capture rr_cards in cart-drawer): {% render 'rr-gids-upsell', cart_ids: cart_ids %}
+{%- endcomment -%}
+{%- liquid
+  assign rrg_eind = '2026-10-06 23:59:59 +0200' | date: '%s' | plus: 0
+  assign rrg_nu = 'now' | date: '%s' | plus: 0
+  assign rrg = all_products['gratis-de-complete-vachtverzorgingsgids-pdf']
+-%}
+{%- if rrg_nu <= rrg_eind and rrg != blank and rrg.available -%}
+  {%- assign rrg_check = "," | append: rrg.id | append: "," -%}
+  {%- unless cart_ids contains rrg_check -%}
+    {%- assign rrg_var = rrg.selected_or_first_available_variant -%}
+    <div class="cart-drawer__upsell-product rr-gids-upsell" data-upsell-id="{{ rrg.id }}">
+      <style>
+        .cart-drawer__upsell-products--grid .rr-gids-upsell{border-color:#E6DCF5;background:#FBF9FE}
+        .cart-drawer__upsell-products--grid .rr-gids-upsell .cart-drawer__upsell-image{background:#F3EEFA}
+        .cart-drawer__upsell-products--grid .rr-gids-upsell .cart-drawer__upsell-price{display:flex;flex-direction:column;gap:1px;line-height:1.15}
+        .rr-gids-upsell__prijs{color:#FF7A70;font-weight:800;font-size:13px}
+        .rr-gids-upsell__noot{color:#4B2E83;font-weight:600;font-size:9.5px;line-height:1.25}
+        .cart-drawer__upsell-badge.rr-gids-upsell__badge{background:#4B2E83}
+      </style>
+      <span class="cart-drawer__upsell-badge rr-gids-upsell__badge">Gratis</span>
+      {%- if rrg.featured_image -%}
+        <a href="{{ rrg.url }}" class="cart-drawer__upsell-image"><img src="{{ rrg.featured_image | image_url: width: 160 }}" alt="" loading="lazy" width="56" height="56"></a>
+      {%- endif -%}
+      <a href="{{ rrg.url }}" class="cart-drawer__upsell-name">Complete vachtgids (PDF)</a>
+      <div class="cart-drawer__upsell-price"><strong class="rr-gids-upsell__prijs">{{ rrg_var.price | money }}</strong><span class="rr-gids-upsell__noot">Tijdelijk gratis vanwege Dierendag</span></div>
+      <form action="javascript:void(0)" method="post" enctype="multipart/form-data" class="cart-drawer__upsell-form product-form" data-variant-id="{{ rrg_var.id }}" onsubmit="return false;">
+        <input type="hidden" name="id" value="{{ rrg_var.id }}">
+        <button type="submit" class="cart-drawer__upsell-button product-form__submit button" name="add">+ Gratis erbij</button>
+        <div class="cart-drawer__upsell-error" style="display:none;"><span class="cart-drawer__upsell-error-text"></span></div>
+      </form>
+    </div>
+  {%- endunless -%}
+{%- endif -%}

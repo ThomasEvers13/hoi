@@ -2,6 +2,7 @@
   Dierendag 2026: compact kaartje onder de prijs op productpagina's.
   - Actieproducten: de drie gratis shampoos, met één klik in de winkelwagen.
   - De drie gratis shampoos zelf: één regel dat je ze gratis krijgt bij een actieproduct.
+  - De gratis vachtgids (€ 0): één regel dat hij tijdelijk gratis is vanwege Dierendag.
   Gebruik (custom_liquid blok in main-product): {% render 'rr-dierendag-pdp', product: product %}
 {%- endcomment -%}
 {%- liquid
@@ -11,15 +12,19 @@
   assign rrdd_shampoos = 'pet-head-berry-bright-hondenshampoo-300ml,pet-head-ultimutt-clean-hondenshampoo-300ml,pet-head-mucky-puppy-hondenshampoo-300ml' | split: ','
   assign rrdd_is_actie = false
   assign rrdd_is_shampoo = false
+  assign rrdd_is_gids = false
   if rrdd_actie contains product.handle
     assign rrdd_is_actie = true
   endif
   if rrdd_shampoos contains product.handle
     assign rrdd_is_shampoo = true
   endif
+  if product.handle == 'gratis-de-complete-vachtverzorgingsgids-pdf'
+    assign rrdd_is_gids = true
+  endif
 -%}
 {%- if rrdd_nu <= rrdd_eind -%}
-  {%- if rrdd_is_actie or rrdd_is_shampoo -%}
+  {%- if rrdd_is_actie or rrdd_is_shampoo or rrdd_is_gids -%}
 <style>
   .rrdd-pdp{
     --paars:#4B2E83;--koraal:#FF7A70;--koraal-diep:#F2574C;--lila:#C9B6E8;--lila-licht:#E6DCF5;--lila-grond:#F7F3FC;--inkt:#2B2433;--stil:#6A6178;--wit:#FFFFFF;
@@ -142,6 +147,20 @@
         });
       });
     });
+  })();
+</script>
+    {%- elsif rrdd_is_gids -%}
+<div class="rrdd-pdp rrdd-pdp--kort" data-rrdd-eind="2026-10-06T23:59:59+02:00">
+  <p class="rrdd-pdp__kop">
+    <span class="rrdd-pdp__label">Dierendag-cadeau</span>
+    <span class="rrdd-pdp__datum">t/m dinsdag 6 oktober</span>
+  </p>
+  <p class="rrdd-pdp__titel">Tijdelijk gratis vanwege Dierendag. Leg de gids in je winkelwagen en reken af voor € 0,00, zonder verzendkosten. De downloadlink krijg je direct in je mail.</p>
+</div>
+<script>
+  (function () {
+    var root = document.currentScript && document.currentScript.previousElementSibling;
+    if (root && root.classList.contains('rrdd-pdp') && Date.now() > Date.parse(root.getAttribute('data-rrdd-eind'))) root.remove();
   })();
 </script>
     {%- else -%}
