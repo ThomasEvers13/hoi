@@ -1,0 +1,82 @@
+{%- comment -%}
+  Dierendag 2026: de gratis vachtgids (€ 0) in de blogs over vachtverzorging.
+  - mode 'strip': slanke regel boven het artikel
+  - mode 'card':  kaart met cover onder het artikel
+  Alleen in de hondenblog (handle 'news'), bij artikelen met tag 'cat-hondenrassen' of in de lijst hieronder.
+  Verdwijnt vanzelf na di 6 okt 23:59, en ook zodra de gids niet meer bestelbaar is.
+  Gebruik (sections/main-article.liquid): {% render 'rr-gids-blog', article: article, blog: blog, mode: 'strip' %}
+{%- endcomment -%}
+{%- liquid
+  assign rrgb_eind = '2026-10-06 23:59:59 +0200' | date: '%s' | plus: 0
+  assign rrgb_nu = 'now' | date: '%s' | plus: 0
+  assign rrgb_extra = 'hond-wassen-bad-douche-of-tuin,puppy-wassen-eerste-keer,hoe-vaak-hond-wassen,hoe-vaak-hond-borstelen,hond-in-de-rui,hond-verhaart-veel,beste-hondenborstel-verharen,klitten-hond-vacht-verwijderen,hond-drogen-na-wassen,hond-drogen-na-bad-vergelijking,hond-nat-na-wandeling-drogen,hond-stinkt-ondanks-wassen,natte-hond-geur,modderpoten-hond-regenwandeling-oplossingen,welke-borstel-labradoodle,labradoodle-vachtwissel-puppyvacht,beste-hondenshampoo,welke-pet-head-shampoo-voor-mijn-hond,hoe-vaak-hond-trimmen,hond-dubbele-vacht-scheren,golden-retriever-trimmen' | split: ','
+  assign rrgb_toon = false
+  if blog.handle == 'news'
+    if article.tags contains 'cat-hondenrassen' or rrgb_extra contains article.handle
+      assign rrgb_toon = true
+    endif
+  endif
+  assign rrgb_p = all_products['gratis-de-complete-vachtverzorgingsgids-pdf']
+-%}
+{%- if rrgb_nu <= rrgb_eind and rrgb_toon and rrgb_p != blank and rrgb_p.available -%}
+  {%- assign rrgb_v = rrgb_p.selected_or_first_available_variant -%}
+  {%- if mode == 'strip' -%}
+<div class="page-width page-width--narrow rr-gb-wrap" data-rrgb-eind="2026-10-06T23:59:59+02:00">
+  <style>
+    .rr-gb-strip{--paars:#4B2E83;--koraal:#FF7A70;--lila-licht:#E6DCF5;--lila-grond:#F7F3FC;--inkt:#2B2433;display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;margin:0 0 22px;padding:10px 14px;border-radius:12px;background:var(--lila-grond);border:1px solid var(--lila-licht);color:var(--inkt);font-size:14px;line-height:1.4}
+    .rr-gb-strip__pil{flex:none;background:var(--koraal);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap}
+    .rr-gb-strip__tekst{flex:1 1 220px;min-width:0}
+    .rr-gb-strip__link{flex:none;color:var(--paars);font-weight:700;text-decoration:none;white-space:nowrap}
+    .rr-gb-strip__link:hover{text-decoration:underline}
+  </style>
+  <div class="rr-gb-strip">
+    <span class="rr-gb-strip__pil">Gratis t/m 6 okt</span>
+    <span class="rr-gb-strip__tekst">Onze vachtgids van 36 pagina’s bestel je deze week voor {{ rrgb_v.price | money }}.</span>
+    <a class="rr-gb-strip__link" href="{{ rrgb_p.url }}">Bestel gratis &rarr;</a>
+  </div>
+</div>
+<script>
+  (function () {
+    var root = document.currentScript && document.currentScript.previousElementSibling;
+    if (root && root.classList.contains('rr-gb-wrap') && Date.now() > Date.parse(root.getAttribute('data-rrgb-eind'))) root.remove();
+  })();
+</script>
+  {%- elsif mode == 'card' -%}
+<div class="page-width page-width--narrow rr-gb-wrap" data-rrgb-eind="2026-10-06T23:59:59+02:00">
+  <style>
+    .rr-gb-card{--paars:#4B2E83;--koraal:#FF7A70;--koraal-diep:#F2574C;--lila-licht:#E6DCF5;--inkt:#2B2433;--stil:#6A6178;display:grid;grid-template-columns:132px minmax(0,1fr);gap:20px;align-items:center;margin:36px 0 12px;padding:20px;border-radius:18px;background:linear-gradient(135deg,#F7F3FC 0%,#EFE7FA 100%);border:1px solid var(--lila-licht);color:var(--inkt)}
+    .rr-gb-card__cover{display:block;margin:0}
+    .rr-gb-card__cover img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:0 8px 20px rgba(75,46,131,.22)}
+    .rr-gb-card__pil{display:inline-block;background:var(--koraal);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;margin:0 0 8px}
+    .rr-gb-card__titel{margin:0 0 6px;font-size:20px;line-height:1.25;font-weight:700;color:var(--paars)}
+    .rr-gb-card__tekst{margin:0 0 14px;font-size:14.5px;line-height:1.55;color:var(--inkt)}
+    .rr-gb-card__knop{display:inline-block;background:var(--koraal);color:#fff;font-weight:700;font-size:15px;text-decoration:none;padding:12px 26px;border-radius:28px}
+    .rr-gb-card__knop:hover{background:var(--koraal-diep)}
+    .rr-gb-card__noot{margin:10px 0 0;font-size:12px;line-height:1.45;color:var(--stil)}
+    @media (max-width:749px){
+      .rr-gb-card{grid-template-columns:1fr;gap:14px;padding:18px 16px;text-align:center}
+      .rr-gb-card__cover{max-width:150px;margin:0 auto}
+      .rr-gb-card__knop{display:block}
+    }
+  </style>
+  <aside class="rr-gb-card" aria-label="Gratis vachtgids">
+    {%- if rrgb_p.featured_image -%}
+    <a class="rr-gb-card__cover" href="{{ rrgb_p.url }}" tabindex="-1" aria-hidden="true">{{ rrgb_p.featured_image | image_url: width: 300 | image_tag: loading: 'lazy', width: 132, alt: '' }}</a>
+    {%- endif -%}
+    <div>
+      <span class="rr-gb-card__pil">Dierendag-cadeau · t/m 6 okt</span>
+      <p class="rr-gb-card__titel">Gratis: de Complete Vachtverzorgingsgids</p>
+      <p class="rr-gb-card__tekst">36 pagina’s over vachttypen, borstelen, wassen, drogen en de rui. Bestel hem in onze webshop voor {{ rrgb_v.price | money }}, de downloadlink krijg je direct in je mail.</p>
+      <a class="rr-gb-card__knop" href="{{ rrgb_p.url }}">Bestel gratis voor {{ rrgb_v.price | money }}</a>
+      <p class="rr-gb-card__noot">Je betaalt niets en er zijn geen verzendkosten.</p>
+    </div>
+  </aside>
+</div>
+<script>
+  (function () {
+    var root = document.currentScript && document.currentScript.previousElementSibling;
+    if (root && root.classList.contains('rr-gb-wrap') && Date.now() > Date.parse(root.getAttribute('data-rrgb-eind'))) root.remove();
+  })();
+</script>
+  {%- endif -%}
+{%- endif -%}
