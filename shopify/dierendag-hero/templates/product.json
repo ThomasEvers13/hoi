@@ -1,0 +1,669 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "judge_me_reviews_preview_badge_7wfPpA": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "delivery_notice_rr": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'rr-levering' %}"
+          }
+        },
+        "klarna_on_site_messaging_app_block_rjPGbj": {
+          "type": "shopify://apps/klarna-on-site-messaging/blocks/app-block/b95936a9-74b6-4a95-8103-6a1b6459c25e",
+          "settings": {
+            "data_key": "top-strip-promotion-badge",
+            "theme": "default",
+            "topPadding": "0",
+            "bottomPadding": "0",
+            "messagePrefix": ""
+          }
+        },
+        "trust_icons_H9W9jE": {
+          "type": "trust_icons",
+          "settings": {
+            "show_guarantee": false,
+            "guarantee_text": "100-day money back guarantee",
+            "show_shipping": false,
+            "shipping_text": "Free Shipping",
+            "show_returns": false,
+            "returns_text": "30-Day Returns",
+            "show_warranty": false,
+            "warranty_text": "2-Year Warranty",
+            "show_heart": false,
+            "heart_text": "Togetherness",
+            "show_box_2": true,
+            "box_2_text": "Gratis verzending vanaf €40",
+            "show_certified_2": true,
+            "certified_2_text": "2 Jaar garantie",
+            "show_return": true,
+            "return_text": "50 Dagen gratis retour"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "collapsible_tab_y4Ht66": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Product specificaties",
+            "icon": "paw_print",
+            "content": "<p>{{ product.metafields.custom.product_specificaties_dropdown | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_mxQAMb": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Verzending en retournering",
+            "icon": "box",
+            "content": "<p>Verzending is gratis vanaf € 40,-. Bij bestellingen onder € 40,- rekenen wij € 5,95 verzendkosten. Elke klant heeft het recht op 50 dagen bedenktijd, om te bepalen of het product goed past.<br/><br/>Wil je het product retour sturen, neem dan contact op met onze klantenservice via <a href=\"mailto:info@robustrise.nl \" title=\"mailto:info@robustrise.nl \">info@robustrise.nl </a>en we helpen je graag verder!<br/><br/></p>",
+            "page": ""
+          }
+        },
+        "collapsible_tab_tAnqmP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Handleiding",
+            "icon": "question_mark",
+            "content": "<p>Hier vind je de handleiding voor dit product, staat hier nog niets dan komt dit binnenkort! {{ product.metafields.custom.handleiding_product | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "payment_methods_ximHq9": {
+          "type": "payment_methods",
+          "settings": {
+            "heading": "Betaalmethoden",
+            "icon": "price_tag"
+          }
+        },
+        "add_ons_attqi9": {
+          "type": "add_ons",
+          "settings": {
+            "title": "Exclusieve korting",
+            "description": "Voeg dit product toe aan je bestelling voor exclusieve korting!",
+            "addon_1_product": "",
+            "addon_1_sale_price": "",
+            "addon_1_discount": "30% off",
+            "addon_2_product": "",
+            "addon_2_sale_price": "",
+            "addon_2_discount": "30% off",
+            "addon_3_product": "",
+            "addon_3_sale_price": "",
+            "addon_3_discount": "30% off",
+            "addon_4_product": "",
+            "addon_4_sale_price": "",
+            "addon_4_discount": "30% off",
+            "addon_5_product": "",
+            "addon_5_sale_price": "",
+            "addon_5_discount": "30% off"
+          }
+        },
+        "dierendag_pdp_2026": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% render 'rr-dierendag-pdp', product: product %}"
+          }
+        }
+      },
+      "block_order": [
+        "vendor",
+        "title",
+        "judge_me_reviews_preview_badge_7wfPpA",
+        "price",
+        "dierendag_pdp_2026",
+        "variant_picker",
+        "buy_buttons",
+        "delivery_notice_rr",
+        "klarna_on_site_messaging_app_block_rjPGbj",
+        "trust_icons_H9W9jE",
+        "description",
+        "collapsible_tab_y4Ht66",
+        "collapsible_tab_mxQAMb",
+        "collapsible_tab_tAnqmP",
+        "payment_methods_ximHq9",
+        "add_ons_attqi9"
+      ],
+      "custom_css": [
+        ".summary__title {justify-content: left;}",
+        ".product-media-container.constrain-height.media-fit-contain {border-radius: 16px;}",
+        ".product-media-container.constrain-height .media {border-radius: 16px;}",
+        "@media screen and (min-width: 750px) {.product__column-sticky {display: block; position: sticky; top: 100px; z-index: 2; }}",
+        ".thumbnail {border-radius: 8px;}",
+        "@media screen and (max-width: 749px) {.grid--peek.slider .grid__item:first-of-type {margin-left: 0; }}",
+        ".product__tax {display: none;}"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-82203424-e5b9-47cc-be20-444ee2047bd8",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "rotating_banner_pdp_aUGmJH": {
+      "type": "rotating-banner-pdp",
+      "blocks": {
+        "item_yAnawc": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "text": "Op werkdagen vóór 23:59 uur besteld, de volgende dag in huis"
+          }
+        },
+        "item_EH9DRA": {
+          "type": "item",
+          "settings": {
+            "icon": "certified_2",
+            "text": "2 Jaar garantie"
+          }
+        },
+        "item_aJDbbT": {
+          "type": "item",
+          "settings": {
+            "icon": "box_2",
+            "text": "Gratis verzending vanaf €40"
+          }
+        },
+        "item_ahemmq": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "text": "50 dagen bedenktijd, gratis retourneren"
+          }
+        },
+        "item_KzPBaQ": {
+          "type": "item",
+          "settings": {
+            "icon": "heart",
+            "text": "Lifetime Support"
+          }
+        }
+      },
+      "block_order": [
+        "item_yAnawc",
+        "item_EH9DRA",
+        "item_aJDbbT",
+        "item_ahemmq",
+        "item_KzPBaQ"
+      ],
+      "name": "Gradient marquee ticker",
+      "settings": {
+        "font_size": 22,
+        "font_weight": "600",
+        "letter_spacing": 0,
+        "icon_size": 32,
+        "icon_gap": 14,
+        "stroke_width": 2,
+        "item_spacing": 52,
+        "padding_top": 28,
+        "padding_bottom": 28,
+        "gradient_start": "#feb881",
+        "gradient_end": "#ee6983",
+        "speed": 30
+      }
+    },
+    "perfect_fit_jcVHaQ": {
+      "type": "perfect-fit",
+      "blocks": {
+        "feature_JKjG6B": {
+          "type": "feature",
+          "settings": {
+            "text": "50 Dagen bedenktijd"
+          }
+        },
+        "feature_WWyXxF": {
+          "type": "feature",
+          "settings": {
+            "text": "2 Jaar garantie"
+          }
+        },
+        "feature_fmtDeh": {
+          "type": "feature",
+          "settings": {
+            "text": "Gratis verzending vanaf €40"
+          }
+        }
+      },
+      "block_order": [
+        "feature_JKjG6B",
+        "feature_WWyXxF",
+        "feature_fmtDeh"
+      ],
+      "name": "Perfect Fit",
+      "settings": {
+        "image": "shopify://shop_images/mountain_hikes_with_the_dog.jpg",
+        "title": "Waarom bij ons",
+        "description": "<strong>Betaalbaar en kwalitatief</strong> - Alle producten worden nauwkeurig getest en zijn van perfecte kwaliteit. Daartegenover hanteren wij een lage prijsgarantie.\n<br><br>\n<strong>Gratis bedenktijd</strong> - Elke klant heeft recht op 50 dagen bedenktijd, om te bepalen of het product goed past.<br><br>\n<strong>Betaal later</strong> - Door onze samenwerking met Klarna kun je ook achteraf betalen.",
+        "paw_1_top": 50,
+        "paw_1_left": 50,
+        "paw_1_right": 0,
+        "paw_1_width": 230,
+        "paw_1_height": 230,
+        "paw_1_rotation": -35,
+        "paw_1_color": "#814294",
+        "paw_1_top_mobile": 0,
+        "paw_1_left_mobile": 0,
+        "paw_1_right_mobile": 0,
+        "paw_1_width_mobile": 120,
+        "paw_1_height_mobile": 120,
+        "paw_1_rotation_mobile": -35,
+        "paw_1_color_mobile": "#814294",
+        "paw_2_top": 460,
+        "paw_2_left": 0,
+        "paw_2_right": 80,
+        "paw_2_width": 250,
+        "paw_2_height": 230,
+        "paw_2_rotation": 45,
+        "paw_2_color": "#ffffff",
+        "paw_2_top_mobile": 950,
+        "paw_2_left_mobile": 0,
+        "paw_2_right_mobile": 10,
+        "paw_2_width_mobile": 120,
+        "paw_2_height_mobile": 150,
+        "paw_2_rotation_mobile": 35,
+        "paw_2_color_mobile": "#ffffff"
+      }
+    },
+    "use_cases_ikEFaj": {
+      "type": "use-cases",
+      "blocks": {
+        "use_case_NX9r3A": {
+          "type": "use_case",
+          "settings": {
+            "image": "{{ product.metafields.custom.gebruik_het_voor_image1.value }}",
+            "title": "{{ product.metafields.custom.use_case_titel_1.value }}",
+            "description": "<p>{{ product.metafields.custom.use_case_description_1 | metafield_tag }}</p>"
+          }
+        },
+        "use_case_weg8Ty": {
+          "type": "use_case",
+          "settings": {
+            "image": "{{ product.metafields.custom.gebruik_het_voor_image2.value }}",
+            "title": "{{ product.metafields.custom.use_case_titel_2.value }}",
+            "description": "<p>{{ product.metafields.custom.use_case_description_2 | metafield_tag }}</p>"
+          }
+        },
+        "use_case_3jjAg9": {
+          "type": "use_case",
+          "settings": {
+            "image": "{{ product.metafields.custom.gebruik_het_voor_image3.value }}",
+            "title": "{{ product.metafields.custom.use_case_titel_3.value }}",
+            "description": "<p>{{ product.metafields.custom.use_case_description_3 | metafield_tag }}</p>"
+          }
+        },
+        "use_case_hQRweK": {
+          "type": "use_case",
+          "settings": {
+            "image": "{{ product.metafields.custom.gebruik_het_voor_image4.value }}",
+            "title": "{{ product.metafields.custom.use_case_titel_4.value }}",
+            "description": "<p>{{ product.metafields.custom.use_case_description_4 | metafield_tag }}</p>"
+          }
+        }
+      },
+      "block_order": [
+        "use_case_NX9r3A",
+        "use_case_weg8Ty",
+        "use_case_3jjAg9",
+        "use_case_hQRweK"
+      ],
+      "name": "Use Cases",
+      "settings": {
+        "title": "Gebruik het voor"
+      }
+    },
+    "collapsible_content_gyqKYy": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible_row_mjQyGy": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "{{ product.metafields.custom.faq_1_titel.value }}",
+            "icon": "paw_print",
+            "metafield_key": "{{ product.metafields.custom.faq_1_titel.value }}",
+            "row_content": "<p>{{ product.metafields.custom.faq_1_sub_copy | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_CNerQa": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "{{ product.metafields.custom.faq_2_titel.value }}",
+            "icon": "paw_print",
+            "metafield_key": "{{ product.metafields.custom.faq_2_titel.value }}",
+            "row_content": "<p>{{ product.metafields.custom.faq_2_sub_copy | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_6ACHnX": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "{{ product.metafields.custom.faq_3_titel.value }}",
+            "icon": "paw_print",
+            "metafield_key": "{{ product.metafields.custom.faq_3_titel.value }}",
+            "row_content": "<p>{{ product.metafields.custom.faq_3_sub_copy | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_Nnqm4R": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "{{ product.metafields.custom.faq_4_titel.value }}",
+            "icon": "paw_print",
+            "metafield_key": "{{ product.metafields.custom.faq_4_titel.value }}",
+            "row_content": "<p>{{ product.metafields.custom.faq_4_sub_copy | metafield_tag }}</p>",
+            "page": ""
+          }
+        },
+        "collapsible_row_WYcH66": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "{{ product.metafields.custom.faq_5_titel.value }}",
+            "icon": "paw_print",
+            "metafield_key": "{{ product.metafields.custom.faq_5_titel.value }}",
+            "row_content": "<p>{{ product.metafields.custom.faq_5_sub_copy | metafield_tag }}</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_row_mjQyGy",
+        "collapsible_row_CNerQa",
+        "collapsible_row_6ACHnX",
+        "collapsible_row_Nnqm4R",
+        "collapsible_row_WYcH66"
+      ],
+      "custom_css": [
+        ".accordion__title {font-size: 18px;}",
+        ".content-container {border-radius: 16px;}"
+      ],
+      "name": "t:sections.collapsible_content.presets.name",
+      "settings": {
+        "caption": "Antwoorden op",
+        "heading": "Veelgestelde vragen",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "section",
+        "container_color_scheme": "scheme-d50f4d51-5fb7-4d49-a203-3f58d9c5ce4e",
+        "color_scheme": "scheme-82203424-e5b9-47cc-be20-444ee2047bd8",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "footer_text": "<p>Nogsteeds vragen?</p><p>Contact ons via whats-app of onze <a href=\"/pages/contact\" target=\"_blank\" title=\"Contact\">contactpagina</a> en we helpen je graag verder!</p>",
+        "footer_text_alignment": "center",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "pdp_ugc_section_WqmXKX": {
+      "type": "pdp-ugc-section",
+      "blocks": {
+        "image_EFhqW7": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/dog-running-with-owner-outdoor.jpg",
+            "username": "",
+            "verified": false
+          }
+        },
+        "image_JrPzUA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/mountain_hikes_with_the_dog.jpg",
+            "username": "",
+            "verified": false
+          }
+        },
+        "image_9Ajp9b": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/dog-walking-in-city-with-harness.jpg",
+            "username": "",
+            "verified": false
+          }
+        },
+        "image_dyDpyd": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/dog_training.jpg",
+            "username": "",
+            "verified": false
+          }
+        },
+        "image_EgpGp9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/dog-signs-too-cold-winter-walk.webp",
+            "username": "",
+            "verified": false
+          }
+        }
+      },
+      "block_order": [
+        "image_EFhqW7",
+        "image_JrPzUA",
+        "image_9Ajp9b",
+        "image_dyDpyd",
+        "image_EgpGp9"
+      ],
+      "custom_css": [],
+      "name": "RobustRise Fam",
+      "settings": {
+        "heading": "Join the #RobustRiseFam",
+        "subheading": "Post jouw foto met #RobustRiseFam op Instagram en maak kans op exclusieve kortingen op je volgende bestelling!"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "custom_css": [
+        ".price--on-sale .price-item--regular {color: rgb(18 18 18 / 40%);}",
+        ".product__tax {display: none;}",
+        ".rating-star {--color-rating-star: #ff7a70; font-size: calc(var(--font-size) * 1.4rem);}",
+        ".card__heading {font-weight: 700;}"
+      ],
+      "settings": {
+        "heading": "Interessante producten",
+        "heading_size": "h1",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-82203424-e5b9-47cc-be20-444ee2047bd8",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "17449698992831d342": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_cQMjAY": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_cQMjAY"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "sticky_cart_button_dYDdaK": {
+      "type": "sticky-cart-button",
+      "name": "Sticky Add to Cart",
+      "settings": {}
+    },
+    "expert_review_waterblazer": {
+      "type": "expert-review",
+      "name": "Expert review",
+      "settings": {
+        "logo_url": "https://cdn.shopify.com/s/files/1/0794/3959/3816/files/hondencentrum-logo.svg?v=1782744497",
+        "logo_alt": "Hondencentrum logo",
+        "reviewed_by": "Beoordeeld door experts",
+        "badge_text": "#1 VAN TOP 7 · 2026",
+        "use_featured_image": false,
+        "image_url": "https://cdn.shopify.com/s/files/1/0794/3959/3816/files/waterblazer-3800w-zwart_906a85e6-52a4-4ed7-a0b6-a9df105de591.jpg",
+        "image_alt": "Robustrise Waterblazer Hond 3800W",
+        "star_count": 5,
+        "star_label": "Beste waterblazer voor honden",
+        "heading": "Robustrise Waterblazer 3800W · Voor grote en kleine honden",
+        "quote": "Met een vermogen van 3800W blaast hij moeiteloos water uit zelfs een dikke ondervacht, waardoor je hond in korte tijd droog en pluisvrij is.",
+        "review_url": "https://www.hondencentrum.com/artikels/beste-waterblazer-hond/",
+        "review_button_text": "Lees volledige review",
+        "product_url": "/products/waterblazer-3800w",
+        "product_button_text": "Bekijk waterblazer",
+        "show_on_handles": "waterblazer-3800w",
+        "hide_on_handles": "",
+        "card_bg": "#ffffff",
+        "border_color": "#ff7a70",
+        "header_gradient_start": "#fff4d6",
+        "header_gradient_end": "#ffe5d9",
+        "header_border": "#f0d9b8",
+        "header_text": "#5c3a21",
+        "badge_bg": "#2f2347",
+        "badge_text_color": "#ffffff",
+        "media_bg": "#f8f4ff",
+        "media_border": "#e2d6f6",
+        "star_color": "#f0b400",
+        "heading_color": "#2f2347",
+        "quote_color": "#4a4360",
+        "review_btn_bg": "#fff4d6",
+        "review_btn_text": "#5c3a21",
+        "review_btn_border": "#f0d9b8",
+        "product_btn_bg": "#ff7a70",
+        "product_btn_text": "#ffffff",
+        "max_width": 900,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "expert_review_tondeuse": {
+      "type": "expert-review",
+      "name": "Expert review",
+      "settings": {
+        "logo_url": "https://cdn.shopify.com/s/files/1/0794/3959/3816/files/hondencentrum-logo.svg?v=1782744497",
+        "logo_alt": "Hondencentrum logo",
+        "reviewed_by": "Beoordeeld door experts",
+        "badge_text": "#1 VAN TOP 5 · 2026",
+        "use_featured_image": false,
+        "image_url": "https://cdn.shopify.com/s/files/1/0794/3959/3816/files/hondentondeuse-hond-robustrise-6909821.jpg",
+        "image_alt": "Robustrise RVS hondentondeuse",
+        "star_count": 5,
+        "star_label": "Beste keuze voor dikke vacht",
+        "heading": "Robustrise RVS Hondentondeuse · Voor dikke vacht",
+        "quote": "...is de beste keuze voor honden met een dikkere of vollere vacht.",
+        "review_url": "https://www.hondencentrum.com/artikels/hondentondeuse/",
+        "review_button_text": "Lees volledige review",
+        "product_url": "/products/robustrise-hondentrimmer",
+        "product_button_text": "Bekijk tondeuse",
+        "show_on_handles": "robustrise-hondentrimmer",
+        "hide_on_handles": "",
+        "card_bg": "#ffffff",
+        "border_color": "#ff7a70",
+        "header_gradient_start": "#fff4d6",
+        "header_gradient_end": "#ffe5d9",
+        "header_border": "#f0d9b8",
+        "header_text": "#5c3a21",
+        "badge_bg": "#2f2347",
+        "badge_text_color": "#ffffff",
+        "media_bg": "#f8f4ff",
+        "media_border": "#e2d6f6",
+        "star_color": "#f0b400",
+        "heading_color": "#2f2347",
+        "quote_color": "#4a4360",
+        "review_btn_bg": "#fff4d6",
+        "review_btn_text": "#5c3a21",
+        "review_btn_border": "#f0d9b8",
+        "product_btn_bg": "#ff7a70",
+        "product_btn_text": "#ffffff",
+        "max_width": 900,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_d6ijLP": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "{% assign show_x3 = false %}{% for c in product.collections %}{% if c.handle == 'anti-blafbanden' %}{% assign show_x3 = true %}{% endif %}{% endfor %}{% if show_x3 %}{% unless product.handle == 'robustrise-hondentrimmer' or product.handle == 'waterblazer-3800w' %}\n<div style=\"background:#ffffff;border:2px solid #FF7A70;border-radius:16px;padding:0;margin:24px auto;max-width:900px;overflow:hidden;box-shadow:0 4px 16px rgba(47,35,71,0.08);font-family:inherit;\">\n\n  <div style=\"background:linear-gradient(135deg,#FFF4D6 0%,#FFE5D9 100%);padding:12px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #F0D9B8;flex-wrap:wrap;gap:10px;\">\n    <div style=\"display:flex;align-items:center;gap:12px;\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0794/3959/3816/files/hondencentrum-logo.svg?v=1782744497\" alt=\"Hondencentrum logo\" style=\"height:32px;width:auto;display:block;\">\n      <span style=\"color:#5C3A21;font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;\">Beoordeeld door experts</span>\n    </div>\n    <span style=\"background:#2F2347;color:#ffffff;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:600;letter-spacing:0.3px;\">#1 VAN TOP 7 &middot; 2026</span>\n  </div>\n\n  <div style=\"padding:22px;display:flex;gap:22px;align-items:center;flex-wrap:wrap;\">\n    <div style=\"flex-shrink:0;width:120px;height:120px;border-radius:12px;overflow:hidden;background:#F8F4FF;display:flex;align-items:center;justify-content:center;border:1px solid #E2D6F6;\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0794/3959/3816/files/robustrise-x3-pro-anti-blafband-hondentrainer-1019313.jpg?v=1770185474\" alt=\"Robustrise X3 Pro anti-blafband\" style=\"width:100%;height:100%;object-fit:cover;display:block;\">\n    </div>\n\n    <div style=\"flex:1;min-width:240px;\">\n      <div style=\"display:flex;align-items:center;gap:8px;margin-bottom:6px;\">\n        <div style=\"color:#F0B400;font-size:18px;letter-spacing:2px;line-height:1;\">&#9733;&#9733;&#9733;&#9733;&#9733;</div>\n        <span style=\"color:#2F2347;font-size:14px;font-weight:600;\">Beste uit de test</span>\n      </div>\n      <h3 style=\"margin:0 0 8px 0;color:#2F2347;font-size:17px;font-weight:600;line-height:1.3;\">Robustrise X3 Pro &middot; Anti blafband</h3>\n      <p style=\"margin:0 0 12px 0;font-size:14px;color:#4A4360;line-height:1.55;font-style:italic;\">\"Komt als beste uit de test en is direct een aanrader voor hondenbezitters die een betrouwbare oplossing zoeken.\"</p>\n      <div style=\"display:flex;gap:10px;flex-wrap:wrap;align-items:center;\">\n        <a href=\"https://www.hondencentrum.com/artikels/beste-anti-blafband/\" rel=\"nofollow noopener\" target=\"_blank\" style=\"display:inline-block;font-size:13px;color:#5C3A21;text-decoration:none;font-weight:600;background:#FFF4D6;padding:8px 14px;border-radius:8px;border:1px solid #F0D9B8;\">\n          Lees volledige review &rarr;\n        </a>\n        <a href=\"/products/robustrise-x3-pro\" style=\"display:inline-block;font-size:13px;color:#ffffff;text-decoration:none;font-weight:600;background:#FF7A70;padding:8px 14px;border-radius:8px;\">\n          Bekijk X3 Pro &rarr;\n        </a>\n      </div>\n    </div>\n  </div>\n\n</div>\n{% endunless %}{% endif %}",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rotating_banner_pdp_aUGmJH",
+    "perfect_fit_jcVHaQ",
+    "custom_liquid_d6ijLP",
+    "expert_review_tondeuse",
+    "expert_review_waterblazer",
+    "use_cases_ikEFaj",
+    "collapsible_content_gyqKYy",
+    "pdp_ugc_section_WqmXKX",
+    "related-products",
+    "17449698992831d342",
+    "sticky_cart_button_dYDdaK"
+  ]
+}

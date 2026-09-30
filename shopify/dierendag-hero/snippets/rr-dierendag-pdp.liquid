@@ -1,0 +1,163 @@
+{%- comment -%}
+  Dierendag 2026: compact kaartje onder de prijs op productpagina's.
+  - Actieproducten: de drie gratis shampoos, met één klik in de winkelwagen.
+  - De drie gratis shampoos zelf: één regel dat je ze gratis krijgt bij een actieproduct.
+  Gebruik (custom_liquid blok in main-product): {% render 'rr-dierendag-pdp', product: product %}
+{%- endcomment -%}
+{%- liquid
+  assign rrdd_eind = '2026-10-06 23:59:59 +0200' | date: '%s' | plus: 0
+  assign rrdd_nu = 'now' | date: '%s' | plus: 0
+  assign rrdd_actie = 'waterblazer-3800w,robustrise-hondenfohn-kleine-honden-waterblazer,robustrise-hondentrimmer,robustrise-x3-pro,robustrise-x3-pro-antiblafband-met-schok,anti-blafband-robustrise,x2-pro-blafband-blauw,robust-rise-anti-blafband-trainingshalsband,robustrise-x1-pro-anti-blafband-hondentrainer,robustrise-aqua-luxe-drinkfontein-kat' | split: ','
+  assign rrdd_shampoos = 'pet-head-berry-bright-hondenshampoo-300ml,pet-head-ultimutt-clean-hondenshampoo-300ml,pet-head-mucky-puppy-hondenshampoo-300ml' | split: ','
+  assign rrdd_is_actie = false
+  assign rrdd_is_shampoo = false
+  if rrdd_actie contains product.handle
+    assign rrdd_is_actie = true
+  endif
+  if rrdd_shampoos contains product.handle
+    assign rrdd_is_shampoo = true
+  endif
+-%}
+{%- if rrdd_nu <= rrdd_eind -%}
+  {%- if rrdd_is_actie or rrdd_is_shampoo -%}
+<style>
+  .rrdd-pdp{
+    --paars:#4B2E83;--koraal:#FF7A70;--koraal-diep:#F2574C;--lila:#C9B6E8;--lila-licht:#E6DCF5;--lila-grond:#F7F3FC;--inkt:#2B2433;--stil:#6A6178;--wit:#FFFFFF;
+    margin:4px 0 6px;padding:14px 16px 13px;border-radius:14px;
+    background:var(--lila-grond);border:1px solid var(--lila-licht);
+    color:var(--inkt);
+  }
+  .rrdd-pdp__kop{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+  .rrdd-pdp__label{
+    display:inline-flex;align-items:center;gap:5px;
+    background:var(--koraal);color:var(--wit);
+    font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 9px;border-radius:999px;
+  }
+  .rrdd-pdp__datum{font-size:12.5px;color:var(--stil)}
+  .rrdd-pdp__titel{margin:0;font-size:15px;font-weight:700;line-height:1.35;color:var(--paars)}
+  .rrdd-pdp__titel span{font-weight:400;color:var(--stil)}
+  .rrdd-pdp__keuze{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:11px 0 9px}
+  .rrdd-pdp__optie{margin:0}
+  .rrdd-pdp__knop{
+    width:100%;display:flex;flex-direction:column;align-items:center;gap:4px;
+    background:var(--wit);border:1.5px solid var(--lila-licht);border-radius:12px;
+    padding:8px 6px 7px;cursor:pointer;font:inherit;color:var(--inkt);
+    transition:border-color .15s ease,box-shadow .15s ease;
+  }
+  .rrdd-pdp__knop:hover{border-color:var(--paars);box-shadow:0 3px 10px rgba(75,46,131,.12)}
+  .rrdd-pdp__knop:focus-visible{outline:2px solid var(--paars);outline-offset:2px}
+  .rrdd-pdp__knop img{width:52px;height:52px;object-fit:contain;display:block}
+  .rrdd-pdp__naam{font-size:12px;font-weight:700;line-height:1.2;color:var(--paars);text-align:center}
+  .rrdd-pdp__actie{font-size:11.5px;font-weight:600;color:var(--koraal-diep)}
+  .rrdd-pdp__knop[aria-pressed="true"]{border-color:var(--paars);background:#FBF9FE}
+  .rrdd-pdp__knop[aria-pressed="true"] .rrdd-pdp__actie{color:var(--paars)}
+  .rrdd-pdp__knop[disabled]{cursor:default;opacity:.55}
+  .rrdd-pdp__uitleg{margin:0;font-size:12.5px;line-height:1.45;color:var(--stil)}
+  .rrdd-pdp__uitleg[data-status="ok"]{color:var(--paars);font-weight:600}
+  .rrdd-pdp--kort .rrdd-pdp__titel{font-weight:500;font-size:14px;color:var(--inkt)}
+</style>
+
+    {%- if rrdd_is_actie -%}
+<div class="rrdd-pdp" data-rrdd-eind="2026-10-06T23:59:59+02:00">
+  <p class="rrdd-pdp__kop">
+    <span class="rrdd-pdp__label"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>Dierendag</span>
+    <span class="rrdd-pdp__datum">t/m dinsdag 6 oktober</span>
+  </p>
+  <p class="rrdd-pdp__titel">Gratis Pet Head shampoo bij dit product <span>(t.w.v. € 14,95)</span></p>
+  <div class="rrdd-pdp__keuze">
+    {%- for handle in rrdd_shampoos -%}
+      {%- assign rrdd_p = all_products[handle] -%}
+      {%- assign rrdd_v = rrdd_p.selected_or_first_available_variant -%}
+      {%- if rrdd_v -%}
+        {%- assign rrdd_naam = rrdd_p.title | remove: 'Pet Head ' | remove: ' Hondenshampoo 300ml' | remove: ' Hondenshampoo' -%}
+        <form class="rrdd-pdp__optie" action="{{ routes.cart_add_url }}" method="post">
+          <input type="hidden" name="id" value="{{ rrdd_v.id }}">
+          <input type="hidden" name="quantity" value="1">
+          <button
+            type="submit"
+            class="rrdd-pdp__knop"
+            data-rrdd-variant="{{ rrdd_v.id }}"
+            aria-pressed="false"
+            {% unless rrdd_v.available %}disabled{% endunless %}
+          >
+            {%- if rrdd_p.featured_image -%}
+              {{ rrdd_p.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', width: 52, height: 52, alt: '' }}
+            {%- endif -%}
+            <span class="rrdd-pdp__naam">{{ rrdd_naam | escape }}</span>
+            <span class="rrdd-pdp__actie">{% if rrdd_v.available %}+ Toevoegen{% else %}Uitverkocht{% endif %}</span>
+          </button>
+        </form>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+  <p class="rrdd-pdp__uitleg" role="status">Leg er één in je winkelwagen, samen met dit product. In de kassa gaat de € 14,95 er automatisch af. Geen code nodig.</p>
+</div>
+<script>
+  (function () {
+    var root = document.currentScript && document.currentScript.previousElementSibling;
+    if (!root || !root.classList.contains('rrdd-pdp')) return;
+    if (Date.now() > Date.parse(root.getAttribute('data-rrdd-eind'))) { root.remove(); return; }
+    var uitleg = root.querySelector('.rrdd-pdp__uitleg');
+    var cartAdd = {{ routes.cart_add_url | json }} + '.js';
+    var root_url = {{ routes.root_url | json }};
+    root.querySelectorAll('form.rrdd-pdp__optie').forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        var knop = form.querySelector('.rrdd-pdp__knop');
+        if (!window.fetch || !knop) return;
+        e.preventDefault();
+        if (knop.getAttribute('aria-pressed') === 'true') return;
+        knop.disabled = true;
+        fetch(cartAdd, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ items: [{ id: Number(knop.getAttribute('data-rrdd-variant')), quantity: 1 }] })
+        }).then(function (r) {
+          if (!r.ok) throw new Error('cart');
+          root.querySelectorAll('.rrdd-pdp__knop').forEach(function (k) {
+            var gekozen = k === knop;
+            k.setAttribute('aria-pressed', gekozen ? 'true' : 'false');
+            k.disabled = true;
+            if (gekozen) k.querySelector('.rrdd-pdp__actie').textContent = '✓ In je winkelwagen';
+          });
+          uitleg.setAttribute('data-status', 'ok');
+          uitleg.textContent = 'Toegevoegd aan je winkelwagen. Zit dit product er ook in, dan is de shampoo in de kassa gratis.';
+          var bubble = document.getElementById('cart-icon-bubble');
+          if (bubble) {
+            fetch(root_url.replace(/\/$/, '') + '/?sections=cart-icon-bubble')
+              .then(function (r) { return r.json(); })
+              .then(function (d) {
+                if (!d || !d['cart-icon-bubble']) return;
+                var tmp = document.createElement('div');
+                tmp.innerHTML = d['cart-icon-bubble'];
+                var nieuw = tmp.querySelector('.shopify-section') || tmp;
+                bubble.innerHTML = nieuw.innerHTML;
+              })
+              .catch(function () {});
+          }
+        }).catch(function () {
+          knop.disabled = false;
+          uitleg.removeAttribute('data-status');
+          uitleg.textContent = 'Toevoegen lukte niet. Probeer het nog eens, of leg de shampoo via de productpagina in je winkelwagen.';
+        });
+      });
+    });
+  })();
+</script>
+    {%- else -%}
+<div class="rrdd-pdp rrdd-pdp--kort" data-rrdd-eind="2026-10-06T23:59:59+02:00">
+  <p class="rrdd-pdp__kop">
+    <span class="rrdd-pdp__label">Dierendag</span>
+    <span class="rrdd-pdp__datum">t/m dinsdag 6 oktober</span>
+  </p>
+  <p class="rrdd-pdp__titel">Deze shampoo krijg je gratis bij een waterblazer, tondeuse, blafband of kattenfontein. Leg ze samen in je winkelwagen, de korting gaat er in de kassa automatisch af.</p>
+</div>
+<script>
+  (function () {
+    var root = document.currentScript && document.currentScript.previousElementSibling;
+    if (root && root.classList.contains('rrdd-pdp') && Date.now() > Date.parse(root.getAttribute('data-rrdd-eind'))) root.remove();
+  })();
+</script>
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}

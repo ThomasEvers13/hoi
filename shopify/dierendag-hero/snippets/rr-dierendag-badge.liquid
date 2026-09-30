@@ -1,0 +1,16 @@
+{%- comment -%}
+  Dierendag 2026: klein labeltje op productkaartjes van producten waarbij de gratis Pet Head shampoo geldt.
+  Gebruik: {% render 'rr-dierendag-badge', product: card_product %}
+  De dure tondeuses (Professional, Apex Ultra) staan er bewust niet in: daar gaat de 10% vanaf € 150 voor.
+{%- endcomment -%}
+{%- liquid
+  assign rrdd_eind = '2026-10-06 23:59:59 +0200' | date: '%s' | plus: 0
+  assign rrdd_nu = 'now' | date: '%s' | plus: 0
+  assign rrdd_handles = 'waterblazer-3800w,robustrise-hondenfohn-kleine-honden-waterblazer,robustrise-hondentrimmer,robustrise-x3-pro,robustrise-x3-pro-antiblafband-met-schok,anti-blafband-robustrise,x2-pro-blafband-blauw,robust-rise-anti-blafband-trainingshalsband,robustrise-x1-pro-anti-blafband-hondentrainer,robustrise-aqua-luxe-drinkfontein-kat' | split: ','
+-%}
+{%- if rrdd_nu <= rrdd_eind and rrdd_handles contains product.handle -%}
+  <span
+    class="rrdd-card-badge"
+    style="position:absolute;top:10px;left:10px;z-index:3;display:inline-flex;align-items:center;gap:5px;background:#FF7A70;color:#fff;font-size:11.5px;font-weight:700;line-height:1;letter-spacing:.02em;padding:6px 10px 6px 8px;border-radius:999px;box-shadow:0 3px 8px rgba(75,46,131,.22);pointer-events:none;white-space:nowrap;"
+  ><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7M7.5 8a2.5 2.5 0 0 1 0-5C11 3 12 8 12 8s1-5 4.5-5a2.5 2.5 0 0 1 0 5"/></svg>Gratis shampoo</span>
+{%- endif -%}
