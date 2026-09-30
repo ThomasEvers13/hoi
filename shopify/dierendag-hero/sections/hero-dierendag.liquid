@@ -1,0 +1,385 @@
+{%- comment -%}
+  Dierendag-hero Robustrise (2026). Tekst links, hond en kat met de gratis Pet Head shampoos rechts.
+  Verdwijnt automatisch na de einddatum; de gewone hero komt dan vanzelf terug.
+{%- endcomment -%}
+{%- liquid
+  assign s = section.settings
+  assign end_ts = 0
+  if s.end_date != blank
+    assign end_str = s.end_date | append: ' 23:59:59 +0200'
+    assign end_ts = end_str | date: '%s' | plus: 0
+  endif
+  assign now_ts = 'now' | date: '%s' | plus: 0
+  assign active = true
+  if end_ts > 0 and now_ts > end_ts
+    assign active = false
+  endif
+  if request.design_mode
+    assign active = true
+  endif
+-%}
+{%- if active -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap">
+{%- if s.hide_hero and s.hide_section_id != blank -%}
+<style id="rrdd-hide-{{ section.id }}">[id$="__{{ s.hide_section_id }}"]{display:none!important}</style>
+{%- endif -%}
+<style>
+  /* Layout: tekstkolom links, feestbeeld rechts op een podium; op mobiel eerst tekst, dan beeld */
+  #rrdd-{{ section.id }}{
+    --paars:#4B2E83;
+    --paars-diep:#33205E;
+    --paars-licht:#6545A6;
+    --koraal:#FF7A70;
+    --koraal-diep:#F2574C;
+    --lila:#C9B6E8;
+    --lila-licht:#E6DCF5;
+    --beige:#F3EDE6;
+    --beige-schaduw:#E2D7CA;
+    --wit:#FFFFFF;
+    --inkt:#2B2433;
+    --ster:#FFD166;
+    --golf:{{ s.wave_color | default: '#FFFFFF' }};
+    --display:"Poppins","Helvetica Neue",Arial,sans-serif;
+    position:relative;
+    overflow:hidden;
+    isolation:isolate;
+    color:var(--wit);
+    font-family:var(--display);
+    background-color:var(--paars);
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='%23C9B6E8' fill-opacity='.13'%3E%3Cg transform='translate(34 44) rotate(-18)'%3E%3Cellipse cx='15' cy='22' rx='12' ry='10'/%3E%3Ccircle cx='3' cy='8' r='4.5'/%3E%3Ccircle cx='11' cy='2' r='4.5'/%3E%3Ccircle cx='20' cy='2' r='4.5'/%3E%3Ccircle cx='28' cy='8' r='4.5'/%3E%3C/g%3E%3Cg transform='translate(170 168) rotate(24) scale(.8)'%3E%3Cellipse cx='15' cy='22' rx='12' ry='10'/%3E%3Ccircle cx='3' cy='8' r='4.5'/%3E%3Ccircle cx='11' cy='2' r='4.5'/%3E%3Ccircle cx='20' cy='2' r='4.5'/%3E%3Ccircle cx='28' cy='8' r='4.5'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23FF7A70' fill-opacity='.45'%3E%3Ccircle cx='132' cy='36' r='2.6'/%3E%3Crect x='58' y='188' width='9' height='3.2' rx='1.6' transform='rotate(35 62 189)'/%3E%3Ccircle cx='226' cy='92' r='2.2'/%3E%3C/g%3E%3Cg fill='%23E6DCF5' fill-opacity='.35'%3E%3Crect x='204' y='26' width='8' height='3' rx='1.5' transform='rotate(-28 208 27)'/%3E%3Ccircle cx='96' cy='122' r='1.8'/%3E%3C/g%3E%3C/svg%3E"),
+      radial-gradient(90% 110% at 80% 45%, var(--paars-licht) 0%, var(--paars) 48%, var(--paars-diep) 100%);
+    background-size:260px 260px, cover;
+  }
+  #rrdd-{{ section.id }} *{box-sizing:border-box}
+  #rrdd-{{ section.id }} .rrdd-inner{
+    position:relative;
+    max-width:1200px;
+    margin:0 auto;
+    padding-inline:clamp(20px,5vw,64px);
+    padding-block:clamp(36px,5vw,64px) clamp(64px,7vw,96px);
+    display:grid;
+    grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    gap:clamp(24px,4vw,56px);
+    align-items:center;
+  }
+
+  /* ---------- tekst ---------- */
+  #rrdd-{{ section.id }} .rrdd-copy{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  #rrdd-{{ section.id }} .rrdd-rating{
+    margin:0;display:flex;align-items:center;gap:8px;
+    font-size:14px;font-weight:600;color:var(--lila-licht);letter-spacing:.01em;
+  }
+  #rrdd-{{ section.id }} .rrdd-stars{color:var(--ster);letter-spacing:2px;font-size:15px}
+  #rrdd-{{ section.id }} .rrdd-title{
+    margin:0;font-family:var(--display);font-weight:800;
+    font-size:clamp(38px,4.6vw,64px);line-height:1.02;letter-spacing:-.025em;
+    color:var(--wit);text-wrap:balance;
+  }
+  #rrdd-{{ section.id }} .rrdd-title span{display:block}
+  #rrdd-{{ section.id }} .rrdd-title .rrdd-title-2{color:var(--koraal)}
+  #rrdd-{{ section.id }} .rrdd-pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(24,12,48,.42);color:var(--wit);
+    border:1px solid rgba(230,220,245,.22);
+    font-size:14.5px;font-weight:600;line-height:1.2;text-decoration:none;
+    padding:10px 16px;border-radius:999px;
+    transition:background .15s ease,border-color .15s ease;
+  }
+  #rrdd-{{ section.id }} .rrdd-pill:hover{background:rgba(24,12,48,.6);border-color:rgba(230,220,245,.45)}
+  #rrdd-{{ section.id }} .rrdd-pill-arrow{color:var(--koraal);font-weight:700}
+  #rrdd-{{ section.id }} .rrdd-text{max-width:30em;font-size:clamp(16px,1.35vw,18px);line-height:1.6;color:var(--lila-licht)}
+  #rrdd-{{ section.id }} .rrdd-text p{margin:0}
+  #rrdd-{{ section.id }} .rrdd-text strong{color:var(--wit);font-weight:700}
+  #rrdd-{{ section.id }} .rrdd-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:4px}
+  #rrdd-{{ section.id }} .rrdd-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    background:var(--koraal);color:var(--wit);
+    font-family:var(--display);font-size:17px;font-weight:700;text-decoration:none;
+    padding:16px 32px;border-radius:12px;
+    box-shadow:0 8px 20px rgba(242,87,76,.28);
+    transition:background .15s ease,transform .15s ease;
+  }
+  #rrdd-{{ section.id }} .rrdd-btn:hover{background:var(--koraal-diep);transform:translateY(-1px)}
+  #rrdd-{{ section.id }} .rrdd-btn:focus-visible,
+  #rrdd-{{ section.id }} .rrdd-pill:focus-visible,
+  #rrdd-{{ section.id }} .rrdd-cat:focus-visible,
+  #rrdd-{{ section.id }} .rrdd-gift:focus-visible,
+  #rrdd-{{ section.id }} .rrdd-tab:focus-visible{outline:3px solid var(--wit);outline-offset:3px}
+  #rrdd-{{ section.id }} .rrdd-cats{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;list-style:none}
+  #rrdd-{{ section.id }} .rrdd-cats-label{font-size:13px;color:var(--lila);margin-right:2px}
+  #rrdd-{{ section.id }} .rrdd-cat{
+    display:inline-block;font-size:13px;font-weight:600;color:var(--wit);text-decoration:none;
+    padding:6px 12px;border-radius:999px;border:1px solid rgba(230,220,245,.35);
+    transition:border-color .15s ease,background .15s ease;
+  }
+  #rrdd-{{ section.id }} .rrdd-cat:hover{border-color:var(--wit);background:rgba(255,255,255,.08)}
+  #rrdd-{{ section.id }} .rrdd-note{margin:0;font-size:12.5px;color:var(--lila)}
+
+  /* ---------- beeld ---------- */
+  #rrdd-{{ section.id }} .rrdd-visual{
+    position:relative;min-width:0;width:100%;max-width:560px;justify-self:center;
+    aspect-ratio:1 / 1;
+  }
+  #rrdd-{{ section.id }} .rrdd-glow{
+    position:absolute;left:8%;right:8%;top:6%;bottom:18%;border-radius:50%;
+    background:radial-gradient(closest-side, rgba(230,220,245,.34), rgba(230,220,245,0));
+    z-index:0;
+  }
+  #rrdd-{{ section.id }} .rrdd-animals{
+    position:absolute;left:50%;bottom:19%;transform:translateX(-50%);
+    width:74%;max-width:100%;height:auto;z-index:2;display:block;
+    filter:drop-shadow(0 18px 24px rgba(20,8,40,.35));
+  }
+  #rrdd-{{ section.id }} .rrdd-balloon{
+    position:absolute;z-index:1;border-radius:50% 50% 48% 48% / 56% 56% 44% 44%;
+    width:clamp(54px,7vw,86px);aspect-ratio:.82;
+  }
+  #rrdd-{{ section.id }} .rrdd-balloon::after{
+    content:"";position:absolute;left:50%;top:100%;width:1.5px;height:120%;
+    background:rgba(230,220,245,.55);transform:translateX(-50%);
+  }
+  #rrdd-{{ section.id }} .rrdd-balloon--koraal{left:0;top:16%;
+    background:radial-gradient(circle at 34% 30%, #FFC2BC 0 10%, var(--koraal) 42%, var(--koraal-diep) 100%)}
+  #rrdd-{{ section.id }} .rrdd-balloon--lila{left:13%;top:4%;width:clamp(44px,5.6vw,68px);
+    background:radial-gradient(circle at 34% 30%, #FFFFFF 0 10%, var(--lila) 45%, #A993D6 100%)}
+  @media (prefers-reduced-motion:no-preference){
+    #rrdd-{{ section.id }} .rrdd-balloon{animation:rrdd-zweef 6s ease-in-out infinite}
+    #rrdd-{{ section.id }} .rrdd-balloon--lila{animation-delay:-2.5s}
+  }
+  @keyframes rrdd-zweef{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+
+  #rrdd-{{ section.id }} .rrdd-sticker{
+    position:absolute;z-index:4;right:0;top:2%;
+    width:clamp(96px,11vw,128px);aspect-ratio:1;border-radius:50%;
+    background:var(--koraal);color:var(--wit);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+    font-weight:800;line-height:1.08;transform:rotate(8deg);
+    box-shadow:0 10px 22px rgba(20,8,40,.28);
+    border:3px solid var(--wit);
+  }
+  #rrdd-{{ section.id }} .rrdd-sticker-1{font-size:clamp(13px,1.3vw,15px);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+  #rrdd-{{ section.id }} .rrdd-sticker-2{font-size:clamp(20px,2.2vw,26px)}
+
+  #rrdd-{{ section.id }} .rrdd-podium{
+    position:absolute;z-index:3;left:5%;right:5%;bottom:0;height:21%;
+    border-radius:16px 16px 6px 6px;
+    background:
+      repeating-linear-gradient(90deg, rgba(0,0,0,0) 0 18px, rgba(120,96,70,.08) 18px 20px),
+      linear-gradient(180deg, var(--wit) 0%, var(--beige) 38%, var(--beige-schaduw) 100%);
+    box-shadow:0 -2px 0 rgba(255,255,255,.7) inset, 0 16px 30px rgba(20,8,40,.35);
+    display:flex;justify-content:center;align-items:flex-start;gap:clamp(8px,1.4vw,16px);
+  }
+  #rrdd-{{ section.id }} .rrdd-gift{
+    position:relative;margin-top:calc(-1 * clamp(22px,2.6vw,36px));
+    width:clamp(82px,9vw,112px);
+    background:var(--wit);border-radius:14px;padding:8px 8px 9px;
+    text-align:center;text-decoration:none;color:var(--inkt);
+    box-shadow:0 10px 20px rgba(20,8,40,.25);
+    transition:transform .15s ease;
+  }
+  #rrdd-{{ section.id }} .rrdd-gift:hover{transform:translateY(-3px)}
+  #rrdd-{{ section.id }} .rrdd-gift img{display:block;width:100%;height:auto;aspect-ratio:1;object-fit:contain;border-radius:8px}
+  #rrdd-{{ section.id }} .rrdd-gift-name{display:block;margin-top:4px;font-size:clamp(10.5px,.95vw,12px);font-weight:700;line-height:1.2;color:var(--paars)}
+  #rrdd-{{ section.id }} .rrdd-gift-tag{
+    position:absolute;top:-9px;left:50%;transform:translateX(-50%);
+    background:var(--koraal);color:var(--wit);
+    font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 9px;border-radius:999px;white-space:nowrap;
+  }
+
+  /* ---------- zijtab ---------- */
+  #rrdd-{{ section.id }} .rrdd-tab{
+    position:absolute;left:0;top:50%;z-index:5;transform:translateY(-50%);
+    writing-mode:vertical-rl;rotate:180deg;
+    background:var(--koraal);color:var(--wit);text-decoration:none;
+    font-weight:800;font-size:14px;letter-spacing:.14em;text-transform:uppercase;
+    padding:18px 10px;border-radius:0 12px 12px 0;
+    box-shadow:0 6px 16px rgba(20,8,40,.25);
+  }
+
+  #rrdd-{{ section.id }} .rrdd-wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:clamp(28px,4vw,56px);display:block;z-index:6}
+  #rrdd-{{ section.id }} .rrdd-wave path{fill:var(--golf)}
+
+  @media (max-width:989px){
+    #rrdd-{{ section.id }} .rrdd-tab{display:none}
+  }
+  @media (max-width:749px){
+    #rrdd-{{ section.id }} .rrdd-inner{grid-template-columns:minmax(0,1fr);padding-block:28px 56px;gap:18px}
+    #rrdd-{{ section.id }} .rrdd-copy{gap:13px}
+    #rrdd-{{ section.id }} .rrdd-title{font-size:clamp(34px,10vw,46px)}
+    #rrdd-{{ section.id }} .rrdd-actions{width:100%}
+    #rrdd-{{ section.id }} .rrdd-btn{width:100%}
+    #rrdd-{{ section.id }} .rrdd-visual{max-width:420px;margin-top:22px}
+    #rrdd-{{ section.id }} .rrdd-gift{width:clamp(70px,20vw,84px);margin-top:-22px}
+  }
+</style>
+
+<section
+  class="rrdd"
+  id="rrdd-{{ section.id }}"
+  {% if s.end_date != blank %}data-end="{{ s.end_date | escape }}T23:59:59+02:00"{% endif %}
+  aria-label="{{ s.heading_line1 | escape }} {{ s.heading_line2 | escape }}"
+>
+  {%- if s.tab_text != blank -%}
+    <a class="rrdd-tab" href="{{ s.button_link | default: '/collections/all' }}">{{ s.tab_text | escape }}</a>
+  {%- endif -%}
+
+  <div class="rrdd-inner">
+    <div class="rrdd-copy">
+      {%- if s.rating_text != blank -%}
+        <p class="rrdd-rating"><span class="rrdd-stars" aria-hidden="true">★★★★★</span>{{ s.rating_text | escape }}</p>
+      {%- endif -%}
+
+      <h2 class="rrdd-title">
+        <span>{{ s.heading_line1 | escape }}</span>
+        {%- if s.heading_line2 != blank -%}<span class="rrdd-title-2">{{ s.heading_line2 | escape }}</span>{%- endif -%}
+      </h2>
+
+      {%- if s.pill_text != blank -%}
+        {%- if s.pill_link != blank -%}
+          <a class="rrdd-pill" href="{{ s.pill_link }}" target="_blank" rel="noopener">{{ s.pill_text | escape }} <span class="rrdd-pill-arrow" aria-hidden="true">→</span></a>
+        {%- else -%}
+          <span class="rrdd-pill">{{ s.pill_text | escape }}</span>
+        {%- endif -%}
+      {%- endif -%}
+
+      {%- if s.text != blank -%}
+        <div class="rrdd-text">{{ s.text }}</div>
+      {%- endif -%}
+
+      {%- if s.button_label != blank -%}
+        <div class="rrdd-actions">
+          <a class="rrdd-btn" href="{{ s.button_link | default: '/collections/all' }}">{{ s.button_label | escape }}</a>
+        </div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="rrdd-cats">
+          {%- if s.cats_label != blank -%}<li class="rrdd-cats-label">{{ s.cats_label | escape }}</li>{%- endif -%}
+          {%- for block in section.blocks -%}
+            {%- if block.settings.label != blank -%}
+              <li {{ block.shopify_attributes }}><a class="rrdd-cat" href="{{ block.settings.link | default: '/collections/all' }}">{{ block.settings.label | escape }}</a></li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if s.note != blank -%}
+        <p class="rrdd-note">{{ s.note | escape }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="rrdd-visual">
+      <span class="rrdd-glow" aria-hidden="true"></span>
+      <span class="rrdd-balloon rrdd-balloon--lila" aria-hidden="true"></span>
+      <span class="rrdd-balloon rrdd-balloon--koraal" aria-hidden="true"></span>
+
+      {%- if s.sticker_line_1 != blank or s.sticker_line_2 != blank -%}
+        <div class="rrdd-sticker">
+          <span class="rrdd-sticker-1">{{ s.sticker_line_1 | escape }}</span>
+          <span class="rrdd-sticker-2">{{ s.sticker_line_2 | escape }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- if s.image != blank -%}
+        {{ s.image | image_url: width: 1024 | image_tag:
+          class: 'rrdd-animals',
+          loading: 'eager',
+          fetchpriority: 'high',
+          widths: '360, 540, 720, 1024',
+          sizes: '(min-width: 1200px) 470px, (min-width: 750px) 40vw, 88vw',
+          alt: s.image.alt
+        }}
+      {%- endif -%}
+
+      {%- if s.gifts != blank -%}
+        <div class="rrdd-podium">
+          {%- for p in s.gifts limit: 3 -%}
+            {%- assign naam = p.title | remove: 'Pet Head ' | remove: ' Hondenshampoo 300ml' | remove: ' Hondenshampoo' -%}
+            <a class="rrdd-gift" href="{{ p.url }}">
+              {%- if s.gift_badge != blank -%}<span class="rrdd-gift-tag">{{ s.gift_badge | escape }}</span>{%- endif -%}
+              {%- if p.featured_image -%}
+                {{ p.featured_image | image_url: width: 240 | image_tag: loading: 'eager', widths: '120, 180, 240', sizes: '112px', alt: p.title }}
+              {%- endif -%}
+              <span class="rrdd-gift-name">{{ naam | escape }}</span>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <svg class="rrdd-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path d="M0,60 L0,34 C260,62 520,64 760,44 C1000,24 1220,8 1440,22 L1440,60 Z"/></svg>
+</section>
+
+<script>
+  (function () {
+    var el = document.getElementById('rrdd-{{ section.id }}');
+    if (!el || {{ request.design_mode | json }}) return;
+    var end = Date.parse(el.getAttribute('data-end') || '');
+    if (isNaN(end) || Date.now() <= end) return;
+    var hide = document.getElementById('rrdd-hide-{{ section.id }}');
+    if (hide) hide.remove();
+    var wrap = el.closest('.shopify-section');
+    (wrap || el).remove();
+  })();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Dierendag hero",
+  "tag": "div",
+  "class": "section-hero-dierendag",
+  "settings": [
+    { "type": "header", "content": "Actieperiode" },
+    { "type": "text", "id": "end_date", "label": "Laatste actiedag (JJJJ-MM-DD)", "default": "2026-10-06", "info": "Na 23:59 op deze dag verdwijnt de banner vanzelf en komt de gewone hero terug." },
+    { "type": "checkbox", "id": "hide_hero", "label": "Gewone hero verbergen tijdens de actie", "default": true },
+    { "type": "text", "id": "hide_section_id", "label": "ID van de gewone hero", "default": "hero_dog_supplies_9KeYfg" },
+    { "type": "header", "content": "Tekst" },
+    { "type": "text", "id": "rating_text", "label": "Beoordeling", "default": "4,7/5 gemiddelde beoordeling" },
+    { "type": "text", "id": "heading_line1", "label": "Kop regel 1", "default": "Dierendag?" },
+    { "type": "text", "id": "heading_line2", "label": "Kop regel 2 (koraal)", "default": "Wij trakteren." },
+    { "type": "text", "id": "pill_text", "label": "Label", "default": "+ Gratis vachtgids voor iedereen" },
+    { "type": "url", "id": "pill_link", "label": "Link van het label" },
+    { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>Gratis Pet Head shampoo (t.w.v. € 14,95) bij je waterblazer, tondeuse, blafband of kattenfontein.</p>" },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Kies je cadeau" },
+    { "type": "url", "id": "button_link", "label": "Knoplink" },
+    { "type": "text", "id": "cats_label", "label": "Label voor de categorielinks", "default": "Geldt bij:" },
+    { "type": "text", "id": "note", "label": "Kleine regel onderaan", "default": "T/m dinsdag 6 oktober · geen code nodig · zolang de voorraad strekt" },
+    { "type": "header", "content": "Beeld" },
+    { "type": "image_picker", "id": "image", "label": "Dieren (vrijstaand, PNG)" },
+    { "type": "product_list", "id": "gifts", "label": "Gratis producten op het podium", "limit": 3 },
+    { "type": "text", "id": "gift_badge", "label": "Labeltje op de producten", "default": "Gratis" },
+    { "type": "text", "id": "sticker_line_1", "label": "Sticker regel 1", "default": "t/m di" },
+    { "type": "text", "id": "sticker_line_2", "label": "Sticker regel 2", "default": "6 okt" },
+    { "type": "text", "id": "tab_text", "label": "Zijtab (alleen desktop)", "default": "Gratis shampoo" },
+    { "type": "color", "id": "wave_color", "label": "Kleur golf onderaan", "default": "#FFFFFF" }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Categorielink",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Tekst", "default": "Waterblazers" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Dierendag hero",
+      "blocks": [
+        { "type": "category", "settings": { "label": "Waterblazers" } },
+        { "type": "category", "settings": { "label": "Tondeuses" } },
+        { "type": "category", "settings": { "label": "Blafbanden" } },
+        { "type": "category", "settings": { "label": "Kattenfonteinen" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
